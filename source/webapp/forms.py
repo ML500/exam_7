@@ -18,4 +18,4 @@ class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ['choice']
-        widgets = {'choice': forms.CheckboxSelectMultiple}
+        widgets = {'choice': forms.RadioSelect}
