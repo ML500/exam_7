@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Delete Choice{% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+    <h1>Are you sure want to delete choice "{{ choice.text }}"?</h1>
+    <form action="{% url "choice_delete" choice.pk %}" method="post">
+        {% csrf_token %}
+        <p><input type="submit" value="Confirm"></p>
+        <p><a href="{% url 'index' %}">Cancel</a></p>
+    </form>
+{% endblock %}

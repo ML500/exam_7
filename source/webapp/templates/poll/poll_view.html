@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Poll View{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'poll_update' poll.pk %}">Update Poll</a></li>
+    <li><a href="{% url 'poll_delete' poll.pk %}">Delete Poll</a></li>
+    <li><a href="{% url 'choice_add' poll.pk %}">Add Choice</a></li>
+    <li><a href="{% url 'index' %}">Cancel</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ poll.text }}</h1>
+    <p>Дата создания: {{ poll.created_at }}</p>
+    <h3>Ответы: </h3>
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+        {% for choice in choices %}
+            <div class="choices">
+                <div class="choice-text">
+                    <li>{{ choice.text }}</li>
+                </div>
+                <div class="choices-but">
+                    <p><a href="{% url 'choice_update' choice.pk %}">Update</a></p>
+                    <p><a href="{% url 'choice_delete' choice.pk %}">Delete</a></p>
+                </div>
+            </div>
+        {% empty %}
+            <p>Нет ответов</p>
+        {% endfor %}
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+{% endblock %}
+
