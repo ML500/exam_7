@@ -32,7 +32,7 @@ class PollView(DetailView):
         return context
 
     def paginate_choices(self, poll):
-        choices = poll.choices.all()
+        choices = poll.pols.all()
         if choices.count() > 0:
             paginator = Paginator(choices, self.paginate_choices_by, orphans=self.paginate_orphans)
             page_number = self.request.GET.get('page', 1)

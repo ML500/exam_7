@@ -31,7 +31,4 @@ class Answer(models.Model):
                              on_delete=models.CASCADE, verbose_name='Опрос')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
     choice = models.ForeignKey('webapp.Choice', related_name='choices',
-                             on_delete=models.CASCADE, verbose_name='Ответ')
-
-
-
+                               on_delete=models.CASCADE, verbose_name='Ответ')
