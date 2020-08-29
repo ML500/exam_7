@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+    <h1 class="headline">Polls</h1>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+
+    {% for poll in polls %}
+        <div class="poll">
+            <div class="text-block">
+                <h2>
+                    {{ poll.text }}
+                </h2>
+                <p>дата создания: {{ poll.created_at }} </p>
+            </div>
+{#            <div class="icon-block">#}
+{#                <p><a class="icon update" href="{% url 'poll_update' poll.pk %}">Update</a></p>#}
+{#                <p><a class="icon delete" href="{% url 'poll_delete' poll.pk %}">Delete</a></p>#}
+{#            </div>#}
+        </div>
+    {% endfor %}
+
+
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
